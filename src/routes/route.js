@@ -6,6 +6,9 @@ const {createItem, readItem, updateItem, deleteItem} = require('../controllers/i
 const {authentication, authorization} = require('../middlewares/auth')
 const {userValidation, loginValidation, updateUserValidation} = require('../middlewares/validator')
 
+router.get('/test', (req, res) => {
+    res.status(200).send('Hello world')
+})
 router.post('/createUser', userValidation, createUser)
 router.post('/login', loginValidation, login)
 router.get('/fetchUser/:page', authentication, fetchUser)
