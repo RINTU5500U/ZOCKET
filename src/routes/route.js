@@ -7,7 +7,11 @@ const {authentication, authorization} = require('../middlewares/auth')
 const {userValidation, loginValidation, updateUserValidation} = require('../middlewares/validator')
 
 router.get('/test', (req, res) => {
-    res.status(200).send('Hello world')
+    try {
+        res.status(200).send('Hello world')        
+    } catch (error) {
+        res.status(500).send(error.message)
+    }
 })
 router.post('/createUser', userValidation, createUser)
 router.post('/login', loginValidation, login)
